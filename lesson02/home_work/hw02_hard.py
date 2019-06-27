@@ -16,8 +16,8 @@ for i in list2:
         list3.append('x')
 
 y = eval("".join(list3))
-print(f" В уровнении {equation} при x={x}, y = {y}")
-
+print(f"В уровнении '{equation}' при x={x}, y = {y}")
+print('*'*30)
 # Задание-2: Дата задана в виде строки формата 'dd.mm.yyyy'.
 # Проверить, корректно ли введена дата.
 # Условия корректности:
@@ -34,7 +34,6 @@ date = '01.11.1985'
 # date = '01.22.1001'
 # date = '1.12.1001'
 # date = '-2.10.3001'
-print(date)
 
 if len(date) != 10:
     print("Дата введена не корректно!")
@@ -89,33 +88,28 @@ print('*'*30)
 # Вход: 11
 # Выход: 5 3
 
-inpt = 27
+inpt = 45
 
-i=1
-room=1
-lst_room =[]
-lst = []
-floor_room=0
-while room<=inpt:
-    for floor in range(i):
-        floor_room+=1
-        for number in range(i):
-            lst_room.append(room)
-            room+=1
-            if room==inpt:
-                floor_rm=floor_room
 
-        lst.append(lst_room.copy())
-        lst_room.clear()
-    i+=1
-print(lst[floor_rm])
-print(lst)
-print(floor_rm)
-# print(lst[floor_rm-1].index(inpt)+1)
-
-print("-" * 20)
-
-print(inpt)
+# i=1
+# room=1
+# lst_room =[]
+# lst = []
+# floor_room=0
+# while room<=inpt:
+#     for floor in range(i):
+#         floor_room+=1
+#         for number in range(i):
+#             lst_room.append(room)
+#             room+=1
+#             if room==inpt:
+#                 floor_rm=floor_room
+#
+#         lst.append(lst_room.copy())
+#         lst_room.clear()
+#     i+=1
+#
+# print(lst)
 
 a=1
 b=1
@@ -129,6 +123,6 @@ while b < inpt:
 floor_rm=floor-(b-inpt)//a
 room_rm=a-(b-inpt)%(a)
 
-print(floor_rm)
-print(room_rm)
+print(f"Комната №{inpt} на {floor_rm} этаже,\nпорядковый номер {room_rm}")
+
 
