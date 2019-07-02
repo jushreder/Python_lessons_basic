@@ -9,6 +9,89 @@
 # Ввод: -2/3 - -2
 # Вывод: 1 1/3
 
+expr='5/6 + 4/7'
+expr='-2/3 - -2'
+
+def val(args):
+    """
+
+    :param args:
+    :return:
+    """
+    b=args.split(' ')
+    # print(b)
+    if len(b)>1:
+        if b[0][0]=="-":
+            c=eval(b[0]+ '-' + b[1])
+        else:
+            c = eval(b[0] + '+' + b[1])
+    else:
+        c= eval(b[0])
+    return c
+
+
+def expr_l(args,sign):
+    """
+
+    :param args:
+    :param sign:
+    :return:
+    """
+    # print(args)
+    # print(len(args))
+    c = eval(str(val(args[0])) + sign + str(val(args[1])))
+
+    return c
+
+def denominator(args):
+    """
+
+    :param args:
+    :return:
+    """
+    d=1
+    for i in args:
+
+        if i.count("/"):
+            d=d*int((i[i.index("/")+1:]))
+        else:
+            d=d*1
+    return d
+
+def upr(x,y):
+    """
+
+    :param x:
+    :param y:
+    :return:
+    """
+
+    for i in range(1,round(x*y)+1):
+
+        if round(x*y)%i==0 and y%i==0:
+            z=i
+
+    return z
+
+if expr.count(' + ') > 0:
+    expr_ = expr.split(' + ')
+    l_expr = expr_l(expr_,'+')
+elif expr.count(' - ') > 0:
+    expr_ = expr.split(' - ')
+    l_expr = expr_l(expr_,'-')
+
+d_expt=denominator(expr_)
+dl=upr(l_expr%1, d_expt)
+
+fin=""
+if l_expr//1!=0:
+    fin= str(int(l_expr//1))
+if l_expr%1>0:
+    fin =fin + " " + str(int((round((l_expr%1)*d_expt))/dl)) + "/" +str(int(d_expt/dl))
+
+print(fin)
+
+
 
 # Задание-2:
 # Дана ведомость расчета заработной платы (файл "data/workers").
@@ -17,7 +100,6 @@
 # то их ЗП уменьшается пропорционально, а за заждый час переработки
 # они получают удвоенную ЗП, пропорциональную норме.
 # Кол-во часов, которые были отработаны, указаны в файле "data/hours_of"
-
 
 # Задание-3:
 # Дан файл ("data/fruits") со списком фруктов.
