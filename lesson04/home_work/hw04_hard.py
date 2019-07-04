@@ -4,7 +4,7 @@
 matrix = [[1, 0, 8],
           [3, 4, 1],
           [0, 4, 2]]
-          
+
 # Выполнить поворот (транспонирование) матрицы
 # Пример. Результат:
 # matrix_rotate = [[1, 3, 0],
@@ -12,11 +12,15 @@ matrix = [[1, 0, 8],
 #                  [8, 1, 2]]
 
 # Суть сложности hard: Решите задачу в одну строку
+# matrix_rotate2= [[ matrix[x][y] for x in range(0,3) ] for y in range(0,3)]
+
+for i in list(map(list,zip(*matrix))): print(i)
 
 # Задание-2:
 # Найдите наибольшее произведение пяти последовательных цифр в 1000-значном числе.
 # Выведите произведение и индекс смещения первого числа последовательных 5-ти цифр.
 # Пример 1000-значного числа:
+import re
 number = """
 73167176531330624919225119674426574742355349194934
 96983520312774506326239578318016984801869478851843
@@ -40,6 +44,24 @@ number = """
 71636269561882670428252483600823257530420752963450"""
 
 
+pat = r'[0-9]'
+number_lst = re.findall(pat, number)
+number_int=[int(a) for a in number_lst]
+val=0
+b=0
+p=[]
+for i in range(len(number_int)):
+    if i>=4: b = number_int[i-4] * number_int[i-3] * number_int[i-2] * number_int[i-1] * number_int[i]
+    if b>val:
+       val=b
+       p.clear()
+       p.append(str(number_int[i-4]))
+       p.append(str(number_int[i-3]))
+       p.append(str(number_int[i-2]))
+       p.append(str(number_int[i-1]))
+       p.append(str(number_int[i]))
+print(val, re.search(''.join(p), number).start())
+
 # Задание-3 (Ферзи):
 # Известно, что на доске 8×8 можно расставить 8 ферзей так, чтобы они не били
 # друг друга. Вам дана расстановка 8 ферзей на доске.
@@ -47,3 +69,21 @@ number = """
 # Программа получает на вход восемь пар чисел,
 # каждое число от 1 до 8 — координаты 8 ферзей.
 # Если ферзи не бьют друг друга, выведите слово NO, иначе выведите YES.
+
+fr=[[1,3],[2,6],[3,8],[4,2],[5,4],[6,1],[7,7],[8,5]]
+for i in range(7):
+    f1=fr[i]
+
+    for j in range(i+1,8):
+        f2=fr[j]
+        if abs(f1[0] - f2[0]) == abs(f1[1] - f2[1]) or f1[0] == f2[0] or f1[1] == f2[1]:
+            ant=True
+        else:
+            ant=False
+        if ant:
+            print('YES')
+            break
+    if ant:
+        break
+if not ant:
+    print('NO')
