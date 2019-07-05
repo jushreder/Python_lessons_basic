@@ -5,7 +5,19 @@ equation = 'y = -12x + 11111140.2121'
 x = 2.5
 # вычислите и выведите y
 
+lst_equation=equation.split("=")
+list2=list(lst_equation[1])
+list3=[]
+for i in list2:
+    if i != "x":
+        list3.append(i)
+    else:
+        list3.append('*')
+        list3.append('x')
 
+y = eval("".join(list3))
+print(f"В уровнении '{equation}' при x={x}, y = {y}")
+print('*'*30)
 # Задание-2: Дата задана в виде строки формата 'dd.mm.yyyy'.
 # Проверить, корректно ли введена дата.
 # Условия корректности:
@@ -18,12 +30,33 @@ x = 2.5
 
 # Пример корректной даты
 date = '01.11.1985'
-
 # Примеры некорректных дат
-date = '01.22.1001'
-date = '1.12.1001'
-date = '-2.10.3001'
+# date = '01.22.1001'
+# date = '1.12.1001'
+# date = '-2.10.3001'
 
+if len(date) != 10:
+    print("Дата введена не корректно!")
+else:
+    str_date = date.split(".")
+
+    if len(str_date[-1]) != 4 or not str_date[-1].isdigit() or int(str_date[-1])==0:
+        print("Дата введена не корректно!")
+
+    else:
+        str_date.pop()
+
+        if len(str_date[-1]) != 2 or not str_date[-1].isdigit() or int(str_date[-1]) >12:
+            print("Дата введена не корректно!")
+        else:
+            str_date.pop()
+            if len(str_date[-1]) != 2 or not str_date[-1].isdigit() or int(str_date[-1]) > 31:
+                print("Дата введена не корректно!")
+            else:
+                print(f"Дата {date} введена правильно!")
+
+
+print('*'*30)
 
 # Задание-3: "Перевёрнутая башня" (Задача олимпиадного уровня)
 #
@@ -54,3 +87,41 @@ date = '-2.10.3001'
 #
 # Вход: 11
 # Выход: 5 3
+
+
+# i=1
+# room=1
+# lst_room =[]
+# lst = []
+# floor_room=0
+# while room<=inpt:
+#     for floor in range(i):
+#         floor_room+=1
+#         for number in range(i):
+#             lst_room.append(room)
+#             room+=1
+#             if room==inpt:
+#                 floor_rm=floor_room
+#
+#         lst.append(lst_room.copy())
+#         lst_room.clear()
+#     i+=1
+#
+# print(lst)
+inpt = 6
+a=1
+b=1
+floor=1
+
+while b < inpt:
+    a+=1
+    b+=a**2
+    floor+=a
+
+floor_rm=floor-(b-inpt)//a
+room_rm=a-(b-inpt)%(a)
+
+print(f"Комната №{inpt} на {floor_rm} этаже,\nпорядковый номер {room_rm}")
+
+
+
