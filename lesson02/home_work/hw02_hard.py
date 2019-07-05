@@ -108,7 +108,7 @@ print('*'*30)
 #     i+=1
 #
 # print(lst)
-inpt = 45
+inpt = 6
 a=1
 b=1
 floor=1
@@ -122,5 +122,6 @@ floor_rm=floor-(b-inpt)//a
 room_rm=a-(b-inpt)%(a)
 
 print(f"Комната №{inpt} на {floor_rm} этаже,\nпорядковый номер {room_rm}")
+
 
 
