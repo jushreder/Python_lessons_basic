@@ -13,3 +13,44 @@
 # Для решения данной задачи используйте алгоритмы из задания easy,
 # оформленные в виде соответствующих функций,
 # и импортированные в данный файл из easy.py
+import os, sys
+import hw05_easy
+
+def menu():
+    print('[1] Перейти в папку            -> go \n'
+          '[2] Посмотреть содержмое папки -> ls \n'
+          '[3] Удалить папку              -> dl \n'
+          '[4] Создать папку              -> cr \n'
+          '[5] Выход                      -> q\n')
+    result = input('->')
+    return result
+
+def go_dir():
+    try:
+        name = input('имя папки: ->')
+        name_dir = f'{os.getcwd()}/{name}'
+        os.chdir(name_dir)
+        print('Успешно перешел')
+    except FileNotFoundError:
+        print('Невозможно перейти')
+
+itm={'go':go_dir,
+     'ls':hw05_easy.ls_dir,
+     'dl':hw05_easy.rm_dir,
+     'cr':hw05_easy.mk_dir,}
+
+try:
+    arg = sys.argv[1]
+except IndexError:
+    arg=menu()
+
+while True:
+    if arg=='q':
+        break
+    else:
+        if itm.get(arg):
+            itm[arg]()
+            arg=input('->')
+        else:
+            print('Не верный аргумент\n')
+            arg = menu()
