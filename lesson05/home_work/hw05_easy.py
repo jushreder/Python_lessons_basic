@@ -72,8 +72,3 @@ def copy_f():
 
     with open(name_copy, 'w') as file:
         file.write(temp)
-
-
-
-
-

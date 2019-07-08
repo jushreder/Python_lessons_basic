@@ -14,6 +14,7 @@
 
 # P.S. По возможности, сделайте кросс-платформенную реализацию.
 
+
 import os
 import sys
 import shutil

@@ -29,7 +29,7 @@ def go_dir():
     try:
         name = input('имя папки: ->')
         name_dir = f'{os.getcwd()}/{name}'
-
+        os.chdir(name_dir)
         print('Успешно перешел')
     except FileNotFoundError:
         print('Невозможно перейти')
